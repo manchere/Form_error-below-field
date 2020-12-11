@@ -1,6 +1,6 @@
 ActionView::Base.field_error_proc = Proc.new do |html_tag, instance_tag|
   fragment = Nokogiri::HTML::DocumentFragment.parse(html_tag)
-  field = fragemt.at('input,select,textarea')
+  field = fragment.at('input,select,textarea')
   model = instance_tag.object
   error_message = model.errors.full_messages.join(', ')
   
